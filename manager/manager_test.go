@@ -18,8 +18,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/util"
+	"github.com/yangjinjie/kube-eventer/core"
+	"github.com/yangjinjie/kube-eventer/util"
 	kube_api "k8s.io/api/core/v1"
 )
 

@@ -21,8 +21,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
-	metrics_core "github.com/AliyunContainerService/kube-eventer/metrics/core"
+	"github.com/yangjinjie/kube-eventer/core"
+	metrics_core "github.com/yangjinjie/kube-eventer/metrics/core"
 	"github.com/denverdino/aliyungo/common"
 	"github.com/denverdino/aliyungo/metadata"
 	"github.com/denverdino/aliyungo/sls"

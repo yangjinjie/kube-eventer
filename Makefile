@@ -1,6 +1,6 @@
 all: build
 
-PREFIX?=registry.aliyuncs.com/acs
+PREFIX?=liyehaha
 FLAGS=
 ARCH?=amd64
 ALL_ARCHITECTURES=amd64 arm arm64 ppc64le s390x
@@ -11,13 +11,13 @@ VERSION?=v1.0.0
 GIT_COMMIT:=$(shell git rev-parse --short HEAD)
 
 
-KUBE_EVENTER_LDFLAGS=-w -X github.com/AliyunContainerService/kube-eventer/version.Version=$(VERSION) -X github.com/AliyunContainerService/kube-eventer/version.GitCommit=$(GIT_COMMIT)
+KUBE_EVENTER_LDFLAGS=-w -X github.com/yangjinjie/kube-eventer/version.Version=$(VERSION) -X github.com/yangjinjie/kube-eventer/version.GitCommit=$(GIT_COMMIT)
 
 fmt:
-	find . -type f -name "*.go" | grep -v "./vendor*" | xargs gofmt -s -w
+    find . -type f -name "*.go" | grep -v "./vendor*" | xargs gofmt -s -w
 
 build: clean
-	GOARCH=$(ARCH) CGO_ENABLED=0 go build -ldflags "$(KUBE_EVENTER_LDFLAGS)" -o kube-eventer  github.com/AliyunContainerService/kube-eventer
+	GOARCH=$(ARCH) CGO_ENABLED=0 go build -ldflags "$(KUBE_EVENTER_LDFLAGS)" -o kube-eventer  github.com/yangjinjie/kube-eventer
 
 sanitize:
 	hack/check_gofmt.sh

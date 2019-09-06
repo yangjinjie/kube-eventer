@@ -22,9 +22,9 @@ import (
 
 	"k8s.io/klog"
 
-	kafka_common "github.com/AliyunContainerService/kube-eventer/common/kafka"
-	event_core "github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/metrics/core"
+	kafka_common "github.com/yangjinjie/kube-eventer/common/kafka"
+	event_core "github.com/yangjinjie/kube-eventer/core"
+	"github.com/yangjinjie/kube-eventer/metrics/core"
 	kube_api "k8s.io/api/core/v1"
 )
 

@@ -21,8 +21,8 @@ import (
 	"sync"
 	"time"
 
-	riemannCommon "github.com/AliyunContainerService/kube-eventer/common/riemann"
-	"github.com/AliyunContainerService/kube-eventer/core"
+	riemannCommon "github.com/yangjinjie/kube-eventer/common/riemann"
+	"github.com/yangjinjie/kube-eventer/core"
 	"github.com/riemann/riemann-go-client"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"

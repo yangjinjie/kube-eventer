@@ -17,7 +17,7 @@ package manager
 import (
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
+	"github.com/yangjinjie/kube-eventer/core"
 	"github.com/prometheus/client_golang/prometheus"
 	"k8s.io/klog"
 )

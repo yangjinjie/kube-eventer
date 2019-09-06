@@ -27,12 +27,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/api"
-	"github.com/AliyunContainerService/kube-eventer/common/flags"
-	"github.com/AliyunContainerService/kube-eventer/manager"
-	"github.com/AliyunContainerService/kube-eventer/sinks"
-	"github.com/AliyunContainerService/kube-eventer/sources"
-	"github.com/AliyunContainerService/kube-eventer/version"
+	"github.com/yangjinjie/kube-eventer/api"
+	"github.com/yangjinjie/kube-eventer/common/flags"
+	"github.com/yangjinjie/kube-eventer/manager"
+	"github.com/yangjinjie/kube-eventer/sources"
+	"github.com/yangjinjie/kube-eventer/version"
+	"github.com/yangjinjie/kube-eventer/sinks"
 	"k8s.io/klog"
 )
 

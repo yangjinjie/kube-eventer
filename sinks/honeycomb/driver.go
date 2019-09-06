@@ -20,8 +20,8 @@ import (
 
 	"k8s.io/klog"
 
-	honeycomb_common "github.com/AliyunContainerService/kube-eventer/common/honeycomb"
-	event_core "github.com/AliyunContainerService/kube-eventer/core"
+	honeycomb_common "github.com/yangjinjie/kube-eventer/common/honeycomb"
+	event_core "github.com/yangjinjie/kube-eventer/core"
 	kube_api "k8s.io/api/core/v1"
 )
 

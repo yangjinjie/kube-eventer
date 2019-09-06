@@ -25,7 +25,7 @@ func TestCreateMsgFromEvent(t *testing.T) {
 	labels[0] = "abcd"
 	labels[1] = "defg"
 	event := createTestEvent()
-	u, _ := url.Parse("webhook:?level=Normal")
+	u, _ := url.Parse("webhook:http://127.0.0.1:?level=Normal")
 	d, _ := NewWebHookSink(u)
 	msg := createMsgFromEvent(d, event)
 	text, _ := json.Marshal(msg)
