@@ -20,7 +20,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/yangjinjie/kube-eventer/manager"
+	"kube-eventer/manager"
 	"k8s.io/apiserver/pkg/server/healthz"
 	"k8s.io/klog"
 )

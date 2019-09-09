@@ -18,7 +18,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/yangjinjie/kube-eventer/core"
+	"kube-eventer/core"
 	"k8s.io/klog"
 )
 

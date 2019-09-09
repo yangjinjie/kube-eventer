@@ -19,9 +19,9 @@ import (
 	"sync"
 	"time"
 
-	esCommon "github.com/yangjinjie/kube-eventer/common/elasticsearch"
-	event_core "github.com/yangjinjie/kube-eventer/core"
-	"github.com/yangjinjie/kube-eventer/metrics/core"
+	esCommon "kube-eventer/common/elasticsearch"
+	event_core "kube-eventer/core"
+	"kube-eventer/metrics/core"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )

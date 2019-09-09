@@ -22,9 +22,9 @@ import (
 	"sync"
 	"time"
 
-	influxdb_common "github.com/yangjinjie/kube-eventer/common/influxdb"
-	"github.com/yangjinjie/kube-eventer/core"
-	metrics_core "github.com/yangjinjie/kube-eventer/metrics/core"
+	influxdb_common "kube-eventer/common/influxdb"
+	"kube-eventer/core"
+	metrics_core "kube-eventer/metrics/core"
 	influxdb "github.com/influxdata/influxdb/client"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"

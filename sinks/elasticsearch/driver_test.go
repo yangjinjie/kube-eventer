@@ -20,8 +20,8 @@ import (
 	"testing"
 	"time"
 
-	esCommon "github.com/yangjinjie/kube-eventer/common/elasticsearch"
-	"github.com/yangjinjie/kube-eventer/core"
+	esCommon "kube-eventer/common/elasticsearch"
+	"kube-eventer/core"
 	"github.com/stretchr/testify/assert"
 	kube_api "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

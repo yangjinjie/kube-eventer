@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yangjinjie/kube-eventer/core"
+	"kube-eventer/core"
 )
 
 type DummySink struct {

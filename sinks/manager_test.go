@@ -21,8 +21,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	kube_api "k8s.io/api/core/v1"
 
-	"github.com/yangjinjie/kube-eventer/core"
-	"github.com/yangjinjie/kube-eventer/util"
+	"kube-eventer/core"
+	"kube-eventer/util"
 )
 
 func doThreeBatches(manager core.EventSink) time.Duration {

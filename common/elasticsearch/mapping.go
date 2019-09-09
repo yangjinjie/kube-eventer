@@ -16,7 +16,7 @@ package elasticsearch
 import (
 	"strings"
 
-	"github.com/yangjinjie/kube-eventer/metrics/core"
+	"kube-eventer/metrics/core"
 )
 
 func MetricFamilyTimestamp(metricFamily core.MetricFamily) string {

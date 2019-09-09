@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yangjinjie/kube-eventer/core"
+	"kube-eventer/core"
 	"k8s.io/api/core/v1"
 	"k8s.io/klog"
 )
@@ -59,6 +59,9 @@ wechat msg struct
 type WebHookMsg struct {
 	MsgType string     `json:"msgtype"`
 	Text    WechatText `json:"text"`
+
+	Namespace string `json:"namespace"`
+	Pod string `json:"pod"`
 }
 
 type WechatText struct {
@@ -183,6 +186,8 @@ func createMsgFromEvent(d *WebHookSink, event *v1.Event) *WebHookMsg {
 			template = fmt.Sprintf(LABE_TEMPLATE, label) + template
 		}
 	}
+	msg.Namespace = event.Namespace
+	msg.Pod = event.Name
 
 	msg.Text = WechatText{
 		Content: fmt.Sprintf(template, event.Type, event.InvolvedObject.Kind, event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
@@ -196,7 +201,10 @@ func NewWebHookSink(uri *url.URL) (*WebHookSink, error) {
 		Level: WARNING,
 	}
 	if len(uri.Host) > 0 {
-		d.Endpoint = uri.Host + uri.Path
+		d.Endpoint = "http://" + uri.Host + uri.Path
+		klog.Info(fmt.Sprintf("endpoint: %s", d.Endpoint))
+	} else {
+		klog.Info(fmt.Sprintf("endpoint: %s", SEND_MSG_URL))
 	}
 	opts := uri.Query()
 

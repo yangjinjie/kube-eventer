@@ -18,8 +18,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yangjinjie/kube-eventer/core"
-	"github.com/yangjinjie/kube-eventer/util"
+	"kube-eventer/core"
+	"kube-eventer/util"
 	kube_api "k8s.io/api/core/v1"
 )
 

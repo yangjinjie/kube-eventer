@@ -27,12 +27,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yangjinjie/kube-eventer/api"
-	"github.com/yangjinjie/kube-eventer/common/flags"
-	"github.com/yangjinjie/kube-eventer/manager"
-	"github.com/yangjinjie/kube-eventer/sources"
-	"github.com/yangjinjie/kube-eventer/version"
-	"github.com/yangjinjie/kube-eventer/sinks"
+	"kube-eventer/api"
+	"kube-eventer/common/flags"
+	"kube-eventer/manager"
+	"kube-eventer/sources"
+	"kube-eventer/version"
+	"kube-eventer/sinks"
 	"k8s.io/klog"
 )
 

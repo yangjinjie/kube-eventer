@@ -19,8 +19,8 @@ import (
 	"testing"
 	"time"
 
-	riemannCommon "github.com/yangjinjie/kube-eventer/common/riemann"
-	"github.com/yangjinjie/kube-eventer/core"
+	riemannCommon "kube-eventer/common/riemann"
+	"kube-eventer/core"
 	pb "github.com/golang/protobuf/proto"
 	"github.com/riemann/riemann-go-client/proto"
 	"github.com/stretchr/testify/assert"

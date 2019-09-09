@@ -16,8 +16,8 @@ package mysql
 
 import (
 	"encoding/json"
-	mysql_common "github.com/yangjinjie/kube-eventer/common/mysql"
-	"github.com/yangjinjie/kube-eventer/core"
+	mysql_common "kube-eventer/common/mysql"
+	"kube-eventer/core"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"
 	"net/url"
