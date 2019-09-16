@@ -40,7 +40,7 @@ const (
 )
 
 var (
-	MSG_TEMPLATE = "Level:%s \nKind:%s \nNamespace:%s \nName:%s \nReason:%s \nTimestamp:%s \nMessage:%s"
+	MSG_TEMPLATE = "Level: %s \nKind: %s \nNamespace: %s \nName: %s \nReason: %s \nTimestamp: %s \nMessage: %s"
 
 	MSG_TEMPLATE_ARR = [][]string{
 		{"Level"},
@@ -62,6 +62,9 @@ type WebHookMsg struct {
 
 	Namespace string `json:"namespace"`
 	Pod string `json:"pod"`
+	Reason string `json:"reason"`
+	Message string `json:"message"`
+
 }
 
 type WechatText struct {
@@ -188,6 +191,8 @@ func createMsgFromEvent(d *WebHookSink, event *v1.Event) *WebHookMsg {
 	}
 	msg.Namespace = event.Namespace
 	msg.Pod = event.Name
+	msg.Reason = event.Reason
+	msg.Message = event.Message
 
 	msg.Text = WechatText{
 		Content: fmt.Sprintf(template, event.Type, event.InvolvedObject.Kind, event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
