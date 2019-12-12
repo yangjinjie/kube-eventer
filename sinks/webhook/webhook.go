@@ -22,6 +22,7 @@ import (
 	"net/url"
 	"strings"
 	"time"
+	"os"
 
 	"kube-eventer/core"
 	"k8s.io/api/core/v1"
@@ -40,11 +41,12 @@ const (
 )
 
 var (
-	MSG_TEMPLATE = "Level: %s \nKind: %s \nNamespace: %s \nName: %s \nReason: %s \nTimestamp: %s \nMessage: %s"
+	MSG_TEMPLATE = "Level: %s \nKind: %s \nClusterName: %s \nNamespace: %s \nName: %s \nReason: %s \nTimestamp: %s \nMessage: %s"
 
 	MSG_TEMPLATE_ARR = [][]string{
 		{"Level"},
 		{"Kind"},
+		{"ClusterName"},
 		{"Namespace"},
 		{"Name"},
 		{"Reason"},
@@ -60,6 +62,7 @@ type WebHookMsg struct {
 	MsgType string     `json:"msgtype"`
 	Text    WechatText `json:"text"`
 
+	ClusterName string `json:"clustername"`
 	Namespace string `json:"namespace"`
 	Pod string `json:"pod"`
 	Reason string `json:"reason"`
@@ -163,6 +166,9 @@ func (d *WebHookSink) Send(event *v1.Event) {
 
 }
 
+func getClusterName() string {
+	return os.Getenv("CLUSTER_NAME")
+}
 
 func getLevel(level string) int {
 	score := 0
@@ -193,9 +199,10 @@ func createMsgFromEvent(d *WebHookSink, event *v1.Event) *WebHookMsg {
 	msg.Pod = event.Name
 	msg.Reason = event.Reason
 	msg.Message = event.Message
+	msg.ClusterName = getClusterName()
 
 	msg.Text = WechatText{
-		Content: fmt.Sprintf(template, event.Type, event.InvolvedObject.Kind, event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
+		Content: fmt.Sprintf(template, event.Type, event.InvolvedObject.Kind, getClusterName(),event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
 	}
 
 	return msg
