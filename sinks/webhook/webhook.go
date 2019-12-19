@@ -41,7 +41,7 @@ const (
 )
 
 var (
-	MSG_TEMPLATE = "Level: %s \nKind: %s \nClusterName: %s \nNamespace: %s \nName: %s \nReason: %s \nTimestamp: %s \nMessage: %s"
+	MSG_TEMPLATE = "ClusterName: %s\n\nLevel: %s\nKind: %s\nNamespace: %s\nName: %s\nReason: %s\nTimestamp: %s\nMessage: %s"
 
 	MSG_TEMPLATE_ARR = [][]string{
 		{"Level"},
@@ -167,7 +167,15 @@ func (d *WebHookSink) Send(event *v1.Event) {
 }
 
 func getClusterName() string {
-	return os.Getenv("CLUSTER_NAME")
+	name := ""
+	clusterName := os.Getenv("CLUSTER_NAME")
+	if clusterName == "saas-stage" {
+		name = clusterName + "🐦"
+	} else {
+		name = clusterName
+	}
+
+	return name
 }
 
 func getLevel(level string) int {
@@ -202,7 +210,7 @@ func createMsgFromEvent(d *WebHookSink, event *v1.Event) *WebHookMsg {
 	msg.ClusterName = getClusterName()
 
 	msg.Text = WechatText{
-		Content: fmt.Sprintf(template, event.Type, event.InvolvedObject.Kind, getClusterName(),event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
+		Content: fmt.Sprintf(template, getClusterName(), event.Type, event.InvolvedObject.Kind,event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
 	}
 
 	return msg
