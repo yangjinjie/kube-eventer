@@ -20,17 +20,18 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"time"
-	"os"
 
 	"kube-eventer/core"
-	"k8s.io/api/core/v1"
+
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )
 
 const (
-	WEBHOOK_SINK           = "WebHookSink"
+	WEBHOOK_SINK          = "WebHookSink"
 	WARNING           int = 2
 	NORMAL            int = 1
 	DEFAULT_MSG_TYPE      = "text"
@@ -63,11 +64,11 @@ type WebHookMsg struct {
 	Text    WechatText `json:"text"`
 
 	ClusterName string `json:"clustername"`
-	Namespace string `json:"namespace"`
-	Pod string `json:"pod"`
-	Reason string `json:"reason"`
-	Message string `json:"message"`
-
+	EventType   string `json:"eventtype"`
+	Namespace   string `json:"namespace"`
+	Pod         string `json:"pod"`
+	Reason      string `json:"reason"`
+	Message     string `json:"message"`
 }
 
 type WechatText struct {
@@ -205,12 +206,13 @@ func createMsgFromEvent(d *WebHookSink, event *v1.Event) *WebHookMsg {
 	}
 	msg.Namespace = event.Namespace
 	msg.Pod = event.Name
+	msg.EventType = event.Type
 	msg.Reason = event.Reason
 	msg.Message = event.Message
 	msg.ClusterName = getClusterName()
 
 	msg.Text = WechatText{
-		Content: fmt.Sprintf(template, getClusterName(), event.Type, event.InvolvedObject.Kind,event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
+		Content: fmt.Sprintf(template, getClusterName(), event.Type, event.InvolvedObject.Kind, event.Namespace, event.Name, event.Reason, event.LastTimestamp.String(), event.Message),
 	}
 
 	return msg
